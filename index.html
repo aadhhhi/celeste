@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CELESTE 2025 - Premier Football Championship</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #37003c; /* Deep Purple - PL Primary */
+            --secondary: #ff6b00; /* Vibrant Orange */
+            --accent: #ffd100; /* Bright Yellow - PL Accent */
+            --light: #f8f9fa;
+            --dark: #1a1a1a; /* Dark Gray/Black */
+            --gray: #6c757d;
+            --bg-gradient: linear-gradient(135deg, white, #c300d1,white); /* Deeper Purple Gradient */
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --text-light: #ffffff;
+            --text-dark: #212529;
+            --transition: all 0.4s ease;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: #f0f4f8;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(55, 0, 60, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 0, 0.03) 0%, transparent 20%);
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        .container {
+            width: 100%; /* Changed to 100% for full width */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px; /* Increased padding for consistent spacing on mobile */
+            box-sizing: border-box; /* Ensure padding doesn't add to width */
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.25);
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn:hover {
+            background: #e55a00;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        /* Header */
+        header {
+            background-color: rgba(26, 26, 26, 0.98); /* Dark Header */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        header.scrolled {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .logo h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        .logo span {
+            color: var(--accent); /* Yellow Accent */
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 35px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            display: block;
+        }
+        nav ul li a:hover {
+            color: var(--accent); /* Yellow on Hover */
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent); /* Yellow Underline */
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--accent); /* Yellow Toggle */
+        }
+        /* Hero */
+        .hero {
+            background-image: linear-gradient(rgb(0,0,0,0.6),rgb(0,0,0,0.6)),url(img/8.jpeg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1540228285078-0d4d0a6c0b8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1s ease;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h2 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            animation: glow 3s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 20px rgba(255, 209, 0, 0.1); }
+            to { text-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 40px rgba(255, 209, 0, 0.3); }
+        }
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-btns {
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Section Styling */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+        .section-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-size: cover;
+            background-position: center;
+        }
+        /* About */
+        .about {
+            background-color: var(--card-bg);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: var(--transition);
+        }
+        .about-image:hover {
+             transform: perspective(1000px) rotateY(0deg);
+        }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        /* Teams */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 45px;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            perspective: 1000px;
+        }
+        .team-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: var(--shadow-hover);
+        }
+        .team-img {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .team-img img {
+            z-index: 2;
+            width:90px;
+            animation: bounce 2.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .team-info {
+            padding: 30px;
+            text-align: center;
+        }
+        .team-info h3 {
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-size: 1.6rem;
+        }
+        .team-info p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }/* Schedule */
+        .schedule {
+            background: linear-gradient(to bottom, #f0f4f8, #e6eef7);
+        }
+
+        .schedule-cards-container {
+            margin-top: 20px;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+
+        .schedule-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px; /* Reduced space between cards */
+            padding: 12px 15px; /* Reduced padding for compactness */
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping by default */
+            align-items: center;
+            justify-content: space-between; /* Ensure even spacing */
+            transition: var(--transition);
+            font-size: 0.95rem; /* Slightly smaller font for compactness */
+        }
+
+        .schedule-card .match-info {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 8px; /* Consistent gap */
+        }
+
+        .schedule-card .match-date-time {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 0; /* Allows shrinking */
+            flex: 0 0 auto; /* Don't grow, don't shrink below content */
+            text-align: center;
+            padding: 0 8px;
+        }
+
+        .schedule-card .date {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .schedule-card .time {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .schedule-card .match-teams {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto; /* Take up remaining space */
+            gap: 10px; /* Space between team names and score */
+            min-width: 0; /* Allows shrinking */
+            padding: 0 8px;
+        }
+
+        .schedule-card .team {
+            flex: 1 1 auto;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark);
+            overflow: hidden;
+            text-overflow: ellipsis; /* Handle long team names */
+            white-space: nowrap;
+        }
+
+        .schedule-card .score {
+            font-weight: 700;
+            color: var(--primary);
+            padding: 0 12px;
+            min-width: 50px; /* Ensure score has consistent width */
+            text-align: center;
+        }
+
+        .schedule-card .match-status {
+            flex: 0 0 auto; /* Don't grow or shrink */
+            text-align: center;
+            padding: 0 8px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-scheduled {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-completed {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        /* Hover effect */
+        .schedule-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        /* Standings */
+        .standings {
+            padding: 120px 0; /* Match other sections */
+        }
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            overflow: hidden;
+            box-sizing: border-box;
+            min-width: 600px; 
+            background: var(--card-bg);
+            border-collapse: collapse;
+        }
+        .standings-table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .standings-table th, .standings-table td {
+            padding: 18px 14px; /* Reduced padding for compactness */
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .standings-table th {
+            background: var(--primary); /* Purple Header */
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px; /* Reduced letter spacing */
+            font-size: 0.9rem; /* Smaller font */
+        }
+        .standings-table tr:last-child td { border-bottom: none; }
+        .standings-table tr:hover {
+            background-color: #f1f7ff;
+        }
+        .team-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-logo {
+            width: 32px; /* Smaller logo */
+            height: 32px; /* Smaller logo */
+            background-color: var(--primary); /* Purple Logo */
+            border-radius: 50%;
+            margin-right: 10px; /* Reduced margin */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem; /* Smaller font */
+        }
+        /* Stats */
+        .stats {
+            background: var(--bg-gradient);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+        .stats h2, .stats h3 {
+            color: var(--text-light);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .stat-item {
+            padding: 30px 20px; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent); /* Yellow Bar */
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+        .stat-item:hover::before {
+            transform: scaleX(1);
+        }
+        .stat-item:hover {
+            transform: translateY(-10px); /* Reduced lift */
+        }
+        .stat-value {
+            font-size: 3.2rem; /* Reduced font size */
+            font-weight: 700;
+            margin: 15px 0; /* Reduced margin */
+            color: var(--accent); /* Yellow Value */
+            position: relative;
+            z-index: 2;
+        }
+        /* Gallery */
+        .gallery {
+            background-color: var(--card-bg);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .gallery-item {
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.2);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(55, 0, 60, 0.9); /* Purple Overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: white;
+            font-size: 1.4rem;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        /* Sponsors */
+        .sponsors {
+            background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .sponsors-highlight {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .main-sponsor-logo {
+            max-width: 300px;
+            height: auto;
+            border: 3px solid var(--secondary);
+            border-radius: 12px;
+            padding: 16px;
+            background: rgb(0, 0, 0);
+            box-shadow: 0 12px 30px rgba(255, 107, 0, 0.2);
+            transition: var(--transition);
+            filter: grayscale(0%) opacity(1);
+        }
+
+        .main-sponsor-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 16px 40px rgba(255, 107, 0, 0.35);
+            filter: brightness(1.1);
+        }
+        .sponsors-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        /* Contact */
+        .contact {
+            background: linear-gradient(to bottom, #e6eef7, #f0f4f8);
+        }
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .contact-info h3, .contact-form h3 {
+            margin-bottom: 30px;
+            font-size: 1.9rem;
+        }
+        .contact-details {
+            list-style: none;
+        }
+        .contact-details li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .contact-details i {
+            color: var(--secondary);
+            margin-right: 20px;
+            font-size: 1.4rem;
+            min-width: 24px;
+        }
+        .contact-details p {
+            margin: 0;
+        }
+        .contact-form .form-group {
+            margin-bottom: 20px; /* Reduced margin */
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px; /* Reduced padding */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem; /* Smaller font */
+            transition: var(--transition);
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.15);
+        }
+        .contact-form textarea {
+            height: 160px; /* Reduced height */
+            resize: vertical;
+        }
+        .social-links {
+            display: flex;
+            gap: 18px; /* Reduced gap */
+            margin-top: 25px; /* Reduced margin */
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px; /* Smaller size */
+            height: 46px; /* Smaller size */
+            background: var(--primary);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            font-size: 1.2rem; /* Smaller font */
+        }
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px) rotate(10deg); /* Reduced lift */
+            box-shadow: 0 6px 16px rgba(255, 107, 0, 0.3); /* Reduced shadow */
+        }
+        /* Footer */
+        footer {
+            background: var(--dark); /* Dark Footer */
+            color: var(--text-light);
+            padding: 80px 0 30px; /* Reduced top padding */
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px; /* Reduced gap */
+            margin-bottom: 40px; /* Reduced gap */
+            padding: 0 20px; /* Match container padding */
+            box-sizing: border-box;
+        }
+        .footer-column h3 {
+            color: var(--text-light);
+            margin-bottom: 20px; /* Reduced margin */
+            font-size: 1.4rem; /* Smaller font */
+            position: relative;
+            padding-bottom: 10px; /* Reduced padding */
+        }
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px; /* Shorter line */
+            height: 3px; /* Thinner line */
+            background: var(--accent); /* Yellow Bar */
+            border-radius: 2px;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 10px; /* Reduced margin */
+        }
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            position: relative;
+            font-size: 0.95rem; /* Smaller font */
+        }
+        .footer-links a::before {
+            content: '►';
+            color: var(--accent); /* Yellow Arrow */
+            margin-right: 10px;
+            opacity: 0;
+            transition: var(--transition);
+            transform: translateX(-8px);
+        }
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 15px;
+        }
+        .newsletter-form {
+            margin-top: 15px; /* Reduced margin */
+        }
+        .newsletter-form .form-group {
+            display: flex;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px; /* Reduced padding */
+            border: 1px solid #444;
+            border-radius: 6px 0 0 6px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 0.85rem; /* Smaller font */
+        }
+        .newsletter-form input::placeholder {
+            color: #999;
+        }
+        .newsletter-form button {
+            border-radius: 0 6px 6px 0;
+            padding: 0 14px; /* Reduced padding */
+            font-size: 0.85rem; /* Smaller font */
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px; /* Reduced padding */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa; /* Lighter gray */
+            font-size: 0.85rem; /* Smaller font */
+            box-sizing: border-box;
+        }
+        .copyright a{
+            text-decoration:none;
+            color:#3498db;
+        }
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 { font-size: 3.5rem; }
+            .hero p { font-size: 1.4rem; }
+            .about-content, .contact-container { grid-template-columns: 1fr; }
+            .about-image { max-width: 100%; margin: 0 auto; }
+        }
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 85%;
+                max-width: 400px;
+                height: calc(100vh - 70px);
+                background: var(--dark); /* Dark Mobile Menu */
+                transition: var(--transition);
+                box-shadow: 5px 0 20px rgba(0,0,0,0.2);
+                z-index: 999;
+            }
+            nav.active { left: 0; }
+            nav ul { flex-direction: column; padding: 40px 25px; }
+            nav ul li { margin: 20px 0; }
+            nav ul li a { font-size: 1.3rem; }
+            .hero h2 { font-size: 2.8rem; }
+            .hero p { font-size: 1.2rem; }
+            .section-title h2 { font-size: 2.2rem; }
+            .sponsors-grid { gap: 30px; }
+            .sponsor-logo { height: 70px; }
+            /* Footer adjustments for medium screens */
+            .footer-content { gap: 20px; }
+            .footer-column h3 { font-size: 1.3rem; }
+            .footer-links a { font-size: 0.9rem; }
+            .newsletter-form input, .newsletter-form button { font-size: 0.85rem; }
+            
+            /* Schedule Card adjustments for medium screens */
+            .schedule-card .date, .schedule-card .time, .schedule-card .venue {
+                flex: 1 1 100px; /* Smaller min width */
+            }
+            .schedule-card .teams {
+                flex: 1 1 100%; /* Full width on medium screens */
+                order: 1; /* Move teams to the bottom */
+                margin-top: 10px;
+            }
+            .schedule-card .date, .schedule-card .time {
+                order: 2; /* Move date/time after teams */
+            }
+            .schedule-card .venue, .schedule-card .status {
+                order: 3; /* Move venue/status to the end */
+            }
+        }
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px; /* slightly reduce gap for compactness */
+            }
+
+            /* Optional: Adjust stat value font size slightly if needed for tight space */
+            .stat-value {
+                font-size: 2.5rem; /* Slightly smaller font size for mobile */
+            }
+            .stat-item {
+                padding: 20px 12px; /* was 30px 20px */
+                font-size: 1rem;
+                height:200px;
+            }
+            .hero-btns {
+                display: flex;
+                gap: 12px; /* space between buttons */
+                flex-direction: column; /* stack vertically on very small screens if needed */
+                align-items: center;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 280px; /* prevent overly wide buttons */
+                text-align: center;
+            }
+            .hero h2 { font-size: 2.2rem; }
+            .section-title h2 { font-size: 2rem; }
+            .btn { padding: 12px 24px; font-size: 0.9rem; }
+            .schedule-table, .standings-table { display: block; overflow-x: auto; }
+            .footer-content { gap: 20px; } /* Smaller gap */
+            /* Mobile-specific adjustments */
+            section { padding: 80px 0; }
+            .section-title { margin-bottom: 50px; }
+            .hero { height: 80vh; margin-top: 60px; }
+            .header-container { padding: 12px 20px; } /* Match container padding */
+            .logo h1 { font-size: 1.6rem; }
+            nav ul li { margin-left: 20px; }
+            nav ul li a { font-size: 1rem; }
+            .hero h2 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .btn { padding: 11px 22px; font-size: 0.85rem; }
+            /* Teams grid adjustment */
+            .teams-grid { gap: 25px; } /* Smaller gap between cards */
+            /* Team card adjustments */
+            .team-card { margin-bottom: 25px; } /* Space between stacked cards */
+            .team-img { height: 180px; } /* Smaller image height */
+            .team-img i { font-size: 3.5rem; } /* Smaller icon */
+            .team-info { padding: 20px; } /* Smaller padding */
+            .team-info h3 { font-size: 1.4rem; } /* Smaller heading */
+            .team-info p { font-size: 1rem; } /* Smaller text */
+            .btn { padding: 10px 20px; font-size: 0.85rem; } /* Smaller button */
+            /* About and Contact */
+            .about-content, .contact-container { gap: 40px; }
+            .about-text h2 { font-size: 1.8rem; }
+            .contact-details li { align-items: flex-start; }
+            .contact-details i { margin-top: 5px; }
+            /* Footer adjustments for small screens */
+            .footer-content { grid-template-columns: 1fr;  } /* Stack columns */
+            .footer-column { padding: 0 10px; } /* Add side padding */
+            .footer-links { display: inline-block; text-align: left; margin: 0 auto; } /* Center list */
+            .footer-links li { display: block; margin: 5px 0; } /* Stack links vertically */
+            .footer-links a { padding-left: 0; } /* Remove hover padding */
+            .newsletter-form { max-width: 300px; margin: 15px auto 0; } /* Center form */
+            .newsletter-form .form-group { flex-direction: column; gap: 8px; } /* Stack input and button */
+            .newsletter-form input, .newsletter-form button {
+                width: 100%;
+                border-radius: 6px;
+            }
+            .newsletter-form button {
+                padding: 10px;
+            }
+            .copyright { font-size: 0.85rem; padding-top: 15px; } /* Smaller text and padding */
+            
+            .schedule-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 6px;    /* MUCH SMALLER */
+            border-radius: 6px;
+            font-size: 0.62rem;  /* SHRINK TEXT */
+            gap: 6px;
+            height: 42px;        /* FIX HEIGHT — VERY COMPACT */
+            overflow: hidden;
+        }
+
+        .schedule-card .match-info {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 6px;            /* Smaller gap */
+            white-space: nowrap;
+        }
+
+        .schedule-card .match-date-time {
+            min-width: 55px !important;   /* was too small */
+            flex-shrink: 0 !important;    /* prevent squeezing */
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .schedule-card .date {
+            display: block !important;      /* force visible */
+            font-size: 0.72rem !important;
+        }
+
+        .schedule-card .time {
+            display: block !important;
+            font-size: 0.65rem !important;
+            padding-left:10%;
+        }
+
+        .schedule-card .match-teams {
+            display: flex;
+            flex: 1;
+            min-width: 0;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;            /* tighter space */
+            overflow: hidden;
+        }
+
+        .schedule-card .team {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 0.68rem;
+            padding: 0 1px;
+        }
+
+        .schedule-card .score {
+            flex-shrink: 0;
+            min-width: 28px;     /* smaller score box */
+            text-align: center;
+            font-size: 0.70rem;
+            font-weight: 700;
+            padding: 0;
+        }
+
+        .schedule-card .match-status {
+            flex-shrink: 0;
+            min-width: 48px;     /* narrow status area */
+            text-align: right;
+        }
+
+        .status {
+            padding: 2px 6px;    /* tiny pill */
+            font-size: 0.55rem;  /* very small text */
+            border-radius: 8px;
+        }
+            .standings-table-container {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            }
+            .standings-table {
+                width: 80%;
+                min-width: 300px; /* Prevents table from becoming too narrow */
+                min-height:200px;
+                display: table;
+                font-size: 0.65em; /* Reduce overall font size */
+                margin: 0 auto;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .standings-table th,
+            .standings-table td {
+                padding: 6px 4px; /* Reduce padding */
+                white-space: nowrap; /* Prevent text wrapping */
+            }
+            .team-logo {
+                width: 24px; /* Smaller logo */
+                height: 24px;
+                font-size: 0.7rem;
+                margin-right: 4px;
+            }
+            /* Optional: Hide less critical columns on very small screens */
+            /* .standings-table th:nth-child(n+9),
+            .standings-table td:nth-child(n+9) { display: none; } */
+        }
+        /* High-End Football Animations */
+        /* 1. Sticky Header with Parallax Effect */
+        header {
+            transform: translateZ(0); /* Hardware acceleration */
+            will-change: transform; /* Optimize for animation */
+        }
+        /* 2. Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* 3. Enhanced Stats Animation */
+        .stat-value {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .stat-value.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 4. Optimized Gallery Hover */
+        .gallery-item {
+            transform: translateZ(0); /* Hardware acceleration */
+            will-change: transform;
+        }
+        /* 5. Optimized Team Card Hover */
+        .team-card {
+            transform: translateZ(0); /* Hardware acceleration */
+            will-change: transform;
+        }
+        /* 6. Optimized Button Hover */
+        .btn {
+            transform: translateZ(0); /* Hardware acceleration */
+            will-change: transform;
+        }
+        /* 7. Optimized Hero Text Entry */
+        .hero h2, .hero p, .hero-btns {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .hero h2 {
+            transition-delay: 0.1s;
+        }
+        .hero p {
+            transition-delay: 0.3s;
+        }
+        .hero-btns {
+            transition-delay: 0.5s;
+        }
+        .hero.loaded h2, .hero.loaded p, .hero.loaded .hero-btns {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 8. Optimized About Image Tilt */
+        .about-image {
+            transform: translateZ(0); /* Hardware acceleration */
+            will-change: transform;
+        }
+        /* -------------------------------------------------
+        FOOTBALL INTRO ANIMATION — CELESTE 2025
+        -------------------------------------------------- */
+
+        .football-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(5deg, #0f0017 0%, #260a38 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 5000;
+            animation: introFadeOut 1.6s ease forwards;
+            animation-delay: 2.4s;
+        }
+
+        /* STADIUM LIGHTS */
+        .stadium-lights {
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.1), transparent 70%);
+            opacity: 0;
+            animation: stadiumBlink 1.2s ease forwards;
+        }
+
+        @keyframes stadiumBlink {
+            0% { opacity: 0; }
+            40% { opacity: 0.25; }
+            100% { opacity: 0.15; }
+        }
+
+        /* CENTER CONTENT */
+        .intro-center {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* FOOTBALL BALL */
+        .intro-ball {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            background: url(img/i.png) no-repeat center;
+            background-size: contain;
+            animation: spinBall 1.4s cubic-bezier(.6, .1, .3, 1);
+        }
+
+        @keyframes spinBall {
+            0%   { transform: scale(0.4) rotate(-180deg); opacity: 0; }
+            60%  { transform: scale(1.15) rotate(20deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* TITLE */
+        .intro-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.3rem;
+            letter-spacing: 3px;
+            background: linear-gradient(to right, #ffd100, #ff6b00);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            animation: titleReveal 1.4s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes titleReveal {
+            0%   { opacity: 0; transform: scale(0.8) translateY(20px); filter: blur(4px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+
+        .intro-tag {
+            opacity: 0;
+            font-size: 1.1rem;
+            margin-top: 5px;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 1.3s;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ENERGY SWIPE */
+        .energy-swipe {
+            position: absolute;
+            width: 150%;
+            height: 8px;
+            bottom: 45%;
+            left: -200%;
+            background: linear-gradient(to right, transparent, #ffd100, #ff6b00, transparent);
+            filter: blur(6px);
+            animation: swipeMove 1.3s cubic-bezier(.4,.1,.2,1) forwards;
+            animation-delay: 1.1s;
+        }
+
+        @keyframes swipeMove {
+            0% { left: -200%; opacity: 0; }
+            30% { opacity: 1; }
+            100% { left: 200%; opacity: 0; }
+        }
+
+        /* EXIT FADE */
+        @keyframes introFadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 0; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 576px) {
+            .intro-ball { width: 80px; height: 80px; }
+            .intro-title { font-size: 2.2rem; letter-spacing: 1px; }
+            .intro-tag { font-size: 0.9rem; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="football-intro">
+        <div class="stadium-lights"></div>
+        <div class="intro-center">
+            <div class="intro-ball"></div>
+            <h1 class="intro-title">CELESTE 2025</h1>
+            <p class="intro-tag">Football Championship</p>
+        </div>
+        <div class="energy-swipe"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>CELESTE <span>2025</span></h1>
+            </div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#teams">Teams</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#standings">Standings</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>CELESTE 2025</h2>
+            <p>Memunda HSS's Premier Football Championship. Where Skill Meets Glory!</p>
+            <div class="hero-btns">
+                <a href="#schedule" class="btn">View Schedule</a>
+                <a href="#teams" class="btn btn-outline">Meet Teams</a>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About CELESTE</h2>
+                <p>Learn more about the history and purpose of our tournament</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Where Football Dreams Begin</h2>
+                    <p>Welcome to CELESTE 2025, the most anticipated football championship at Memunda Higher Secondary School. This annual event brings together talented students from all grades, fostering a spirit of competition, teamwork, and sportsmanship.</p>
+                    <p>Our tournament is designed to be more than just a game; it's a celebration of athletic prowess and school spirit. CELESTE provides a platform for young athletes to showcase their skills, build friendships, and create lasting memories.</p>
+                    <a href="#teams" class="btn">View Teams</a>
+                </div>
+                <div class="about-image">
+                    <img src="img/17.jpeg" alt="Football Players">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Teams Section -->
+    <section class="teams" id="teams">
+        <div class="container">
+            <div class="section-title">
+                <h2>League Teams</h2>
+                <p>Meet the talented teams competing in CELESTE 2025</p>
+            </div>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #e4ef1a, #ff1202);"><img src="img/i7.png"></div>
+                    <div class="team-info">
+                        <h3>Barcalona - CS2</h3>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #6CABDD, #0057B8);"><img src="img/i8.png"></div>
+                    <div class="team-info">
+                        <h3>Real Madrid - COM2</h3>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #00a2e0, #810000);"><img src="img/i9.png"></div>
+                    <div class="team-info">
+                        <h3>AC Milan - B2</h3>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #ff0000, #001c58);"><img src="img/l3.png"></div>
+                    <div class="team-info">
+                        <h3>Arsenal - H2</h3>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #003097, #001956);"><img src="img/i6.png"></div>
+                    <div class="team-info">
+                        <h3>Inter Milan - CS1</h3>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #6db1ff, #0b8387);"><img src="img/l2.png"></div>
+                    <div class="team-info">
+                        <h3>Manchester City - COM1</h3>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #0057B8, #135dfd);"><img src="img/i5.png"></div>
+                    <div class="team-info">
+                        <h3>PSG - H1</h3>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img" style="background: linear-gradient(45deg, #b80000, #fde913);"><img src="img/l1.png"></div>
+                    <div class="team-info">
+                        <h3>Manchester United - B1</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Schedule -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Match Schedule & Goal Score</h2>
+                <p>Semi-Final</p>
+            </div>
+            <div class="schedule-cards-container">
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 8</span>
+                            <span class="time">4:15 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">COM2</span>
+                            <span class="score">? - ?</span>
+                            <span class="team">B1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 8</span>
+                            <span class="time">3:30 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">CS2</span>
+                            <span class="score">? - ?</span>
+                            <span class="team">CS1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">
+                <p>Group Stage</p>
+            </div>
+            <div class="schedule-cards-container">
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 6</span>
+                            <span class="time">5:00 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">H1</span>
+                            <span class="score">0 - 3</span>
+                            <span class="team">CS1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 6</span>
+                            <span class="time">4:15 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">COM1</span>
+                            <span class="score">1 - 3</span>
+                            <span class="team">B1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 6</span>
+                            <span class="time">3:30 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">H1</span>
+                            <span class="score">0 - 0</span>
+                            <span class="team">B1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 5</span>
+                            <span class="time">5:40 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">COM1</span>
+                            <span class="score">0 - 0</span>
+                            <span class="team">CS1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 5</span>
+                            <span class="time">5:00 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">COM2</span>
+                            <span class="score">2 - 0</span>
+                            <span class="team">H2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 5</span>
+                            <span class="time">4:15 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">B2</span>
+                            <span class="score">0 - 1</span>
+                            <span class="team">CS2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 5</span>
+                            <span class="time">3:30 AM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">CS2</span>
+                            <span class="score">0 - 0</span>
+                            <span class="team">H2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="match-info">
+                        <div class="match-date-time">
+                            <span class="date">Dec 4</span>
+                            <span class="time">4:30 PM</span>
+                        </div>
+                        <div class="match-teams">
+                            <span class="team">B2</span>
+                            <span class="score">0 - 0</span>
+                            <span class="team">COM2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Standings Section -->
+    <section class="standings" id="standings">
+        <div class="container">
+            <div class="section-title">
+                <h2>League Standings</h2>
+                <p>Current position of teams in CELESTE 2025</p>
+            </div>
+            <div class="table-responsive">
+                <div class="standings-table-container">
+                    <table class="standings-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Team</th>
+                                <th>MP</th>
+                                <th>W</th>
+                                <th>D</th>
+                                <th>L</th>
+                                <th>GF</th>
+                                <th>GA</th>
+                                <th>GD</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>Inter Milan</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>Manchester United</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>Real Madrid</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>Barcalona</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>Manchester City</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>Arsenal</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>-2</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>AC Milan</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>-1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>
+                                    <div class="team-name">
+                                        <span>PSG</span>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>-3</td>
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sponsors Section -->
+    <section class="sponsors">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proudly Sponsored By</h2>
+                <p>Our heartfelt gratitude to our exclusive partner</p>
+            </div>
+            <div class="sponsors-highlight">
+                <img src="img/10.jpg" alt="Main Sponsor" class="main-sponsor-logo">
+            </div>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="section-title">
+                <h2>CELESTE 2025 Statistics</h2>
+                <p style="color:white;">Key numbers from the tournament</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-users fa-2x"></i>
+                    <div class="stat-value">120+</div>
+                    <h3>Players</h3>
+                    <p>From 8 teams</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-futbol fa-2x"></i>
+                    <div class="stat-value">8</div>
+                    <h3>Matches Done</h3>
+                    <p>League matches</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-trophy fa-2x"></i>
+                    <div class="stat-value">1</div>
+                    <h3>Championship</h3>
+                    <p>Winner takes all</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-fire fa-2x"></i>
+                    <div class="stat-value">10</div>
+                    <h3>Goals</h3>
+                    <p>Scored so far</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>CELESTE Gallery</h2>
+                <p>Memorable moments from CELESTE 2025</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/2.jpeg" alt="Football Match">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/3.jpeg" alt="Team Celebration">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/4.jpeg" alt="Stadium">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/5.jpeg" alt="Goal Celebration">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/6.jpeg" alt="Team Photo">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/7.jpeg" alt="Trophy">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch for more information about CELESTE 2025</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Memunda Higher Secondary School<br>Kozhikode, Kerala, India</p>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <p>0496 252 7465</p>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <p>adithyadevss01@gmail.com</p>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <p>Monday - Friday: 9:00 AM - 4:00 PM</p>
+                        </li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/haala.memunda?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CELESTE 2025</h3>
+                    <p>Memunda HSS's Premier Football Championship. Promoting sportsmanship, teamwork, and healthy competition.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/haala.memunda?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#teams">Teams</a></li>
+                        <li><a href="#schedule">Schedule</a></li>
+                        <li><a href="#standings">Standings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Teams</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">CS2</a></li>
+                        <li><a href="#">B2</a></li>
+                        <li><a href="#">COM2</a></li>
+                        <li><a href="#">H2</a></li>
+                        <li><a href="#">B1</a></li>
+                        <li><a href="#">CS1</a></li>
+                        <li><a href="#">COM1</a></li>
+                        <li><a href="#">H1</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates about matches and events.</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 CELESTE 2025 - Memunda HSS Football League. All Rights Reserved. Website created by <a href="https://devcraft.page.gd/">DevCraft</a>.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('nav');
+            mobileToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                });
+            });
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+            // Newsletter form
+            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Thank you for subscribing with ${email}! You'll receive updates soon.`);
+                this.reset();
+            });
+            // Stats Animation Observer (Optimized for Performance)
+            const statsSection = document.getElementById('stats');
+            if (statsSection) {
+                const statObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateStats();
+                            statObserver.unobserve(entry.target); // Unobserve after first trigger
+                        }
+                    });
+                }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+                statObserver.observe(statsSection);
+            }
+            function animateStats() {
+                const statItems = document.querySelectorAll('.stat-value');
+                statItems.forEach(item => {
+                    const value = parseInt(item.textContent.replace(/\D/g, ''));
+                    if (value && !item.classList.contains('animated')) {
+                        item.classList.add('animated'); // Add class for CSS transition
+                        let current = 0;
+                        const increment = value / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= value) {
+                                current = value;
+                                clearInterval(timer);
+                            }
+                            item.textContent = Math.floor(current);
+                        }, 15);
+                    }
+                });
+            }
+            // Add 'loaded' class to hero section for animations
+            const heroSection = document.querySelector('.hero');
+            heroSection.classList.add('loaded');
+        });
+        setTimeout(() => {
+            const intro = document.querySelector('.football-intro');
+            if (intro) intro.style.display = 'none';
+        }, 3000);
+
+    </script>
+</body>
+</html>
